@@ -25,6 +25,14 @@ function HomePage() {
 
 export default HomePage;
 
+const StyledBanner = styled.div`
+  img { 
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+  }
+`;
+
 const StyledHeader = styled.div`
   img {
     width: 80px;
@@ -32,7 +40,6 @@ const StyledHeader = styled.div`
     border-radius: 50%;
   }
   .user-info {
-    margin-top: 50px;
     display: flex;
     align-items: center;
     width: 100%;
@@ -40,8 +47,13 @@ const StyledHeader = styled.div`
     gap: 16px;
   }
 `;
+
 function Header() {
   return (
+    <>
+    <StyledBanner>
+      <img src="https://cutt.ly/lN31yMp" />
+    </StyledBanner>
     <StyledHeader>
       <section className="user-info">
         <img src={`https://github.com/${config.github}.png`} />
@@ -51,6 +63,7 @@ function Header() {
         </div>
       </section>
     </StyledHeader>
+    </>
   );
 }
 
