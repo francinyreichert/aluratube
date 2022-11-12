@@ -1,13 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import config from "../config.json";
 import styled from "styled-components";
-import { CSSReset } from "../src/components/CSSReset";
 import Menu from "../src/components/Menu";
 import { StyledTimeline } from "../src/components/Timeline";
 import Head from "next/head";
 
 function HomePage() {
-  const [searchValue, setSearchValue] = React.useState("");
+  const [searchValue, setSearchValue] = useState("");
   return (
     <>
       <Head>

@@ -1,7 +1,8 @@
+import { useContext } from "react";
 import { ColorModeContext } from "../src/components/Menu/components/ColorMode";
 
 export function Video() {
-    const context = React.useContext(ColorModeContext);
+    const context = useContext(ColorModeContext);
 
     return (
         <div>
