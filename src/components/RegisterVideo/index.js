@@ -44,10 +44,6 @@ export default function RegisterVideo() {
               url: form.url,
               thumb: getThumbnail(form.url),
               playlist: "games",
-            }).then(() => {
-
-            }).catch((error) => {
-              
             });
           }}
         >
