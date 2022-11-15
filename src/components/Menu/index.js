@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import DarkModeSwitch from "./components/DarkModeSwitch";
+import { StyledSwitch, StyledThumb } from "./components/StyledSwitch";
 import Search from "./components/Search";
 
 const StyledMenu = styled.header`
@@ -8,8 +8,8 @@ const StyledMenu = styled.header`
   flex-direction: row;
   height: 56px;
   justify-content: space-between;
-  background-color: ${({ theme }) => theme.backgroundLevel1 || "#FFFFFF"};
-  border: 1px solid ${({ theme }) => theme.borderBase || "#e5e5e5"};
+  background-color: ${({ theme }) => theme.backgroundLevel1};
+  border: 1px solid ${({ theme }) => theme.borderBase};
   align-items: center;
   padding: 0 16px;
   gap: 16px;
@@ -22,7 +22,7 @@ const StyledMenu = styled.header`
       max-width: 127px;
     }
     .text {
-      fill: ${({ theme }) => theme.textColorBase || "#222222"};
+      fill: ${({ theme }) => theme.textColorBase};
     }
   }
 `;
@@ -34,7 +34,9 @@ export default function Menu({ searchValue, setSearchValue }) {
         <Logo />
       </div>
       <Search searchValue={searchValue} setSearchValue={setSearchValue} />
-      <DarkModeSwitch />
+      <StyledSwitch defaultChecked onCheckedChange={context.toggleMode} >
+        <StyledThumb />
+      </StyledSwitch>
     </StyledMenu>
   );
 }

@@ -1,7 +1,10 @@
 import React, { useContext } from "react";
 import { ThemeProvider } from "styled-components";
 import { CSSReset } from "../src/components/CSSReset";
-import { ColorModeContext, ColorModeProvider } from "../src/components/Menu/components/ColorMode";
+import {
+  ColorModeContext,
+  ColorModeProvider,
+} from "../src/components/Menu/components/ColorMode";
 import RegisterVideo from "../src/components/RegisterVideo";
 
 const theme = {
@@ -23,7 +26,9 @@ const theme = {
 
 function ProviderWrapper(props) {
   return (
-    <ColorModeProvider initialMode={"light"}>{props.children}</ColorModeProvider>
+    <ColorModeProvider initialMode={"light"}>
+      {props.children}
+    </ColorModeProvider>
   );
 }
 

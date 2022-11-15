@@ -1,12 +1,29 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import config from "../config.json";
 import styled from "styled-components";
 import Menu from "../src/components/Menu";
 import { StyledTimeline } from "../src/components/Timeline";
 import Head from "next/head";
+import { videoService } from "../src/services/videoService";
 
 function HomePage() {
+  const service = videoService();
   const [searchValue, setSearchValue] = useState("");
+  const [playlists, setPlaylists] = useState({ games: [] });
+
+  useEffect(() => {
+    service.getAllVideos().then((data) => {
+      const newPlaylists = { ...playlists };
+      data.data.forEach((video) => {
+        if (!newPlaylists[video.playlist]) {
+          newPlaylists[video.playlist] = [];
+        }
+        newPlaylists[video.playlist]?.push(video);
+        setPlaylists(newPlaylists);
+      });
+    });
+  }, []);
+
   return (
     <>
       <Head>
@@ -41,7 +58,7 @@ const StyledBanner = styled.div`
 `;
 
 const StyledHeader = styled.div`
-background-color: ${({ theme }) => theme.backgroundLevel1};
+  background-color: ${({ theme }) => theme.backgroundLevel1};
   img {
     width: 80px;
     height: 80px;
@@ -67,7 +84,7 @@ function Header() {
           <img src={`https://github.com/${config.github}.png`} />
           <div>
             <h2>{config.name}</h2>
-            <p>{config.job}</p>
+            <p>{config.description}</p>
           </div>
         </section>
       </StyledHeader>
